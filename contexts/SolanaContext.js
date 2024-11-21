@@ -14,36 +14,36 @@ export const SolanaProvider = ({ children }) => {
     setProvider(newProvider);
   };
 
-  const createTweet = async (topic, content) => {
+  const CreateTweet = async (topic, content) => {
     const program = anchor.workspace.twitter_dapp;
-    await program.methods.createTweet(topic, content).rpc();
+    await program.methods.CreateTweet(topic, content).rpc();
   };
 
-  const getTweet = async (tweetId) => {
+  const GetTweet = async (tweetId) => {
     const program = anchor.workspace.twitter_dapp;
     const tweet = await program.account.tweet.fetch(new PublicKey(tweetId));
     return tweet;
   };
 
-  const reactToTweet = async (tweetId, reactionType) => {
+  const ReactToTweet = async (tweetId, reactionType) => {
     const program = anchor.workspace.twitter_dapp;
     const reaction = reactionType === 'like' ? { like: {} } : { dislike: {} };
-    await program.methods.reactToTweet(reaction).rpc();
+    await program.methods.ReactToTweet(reaction).rpc();
   };
 
-  const addComment = async (tweetId, commentText) => {
+  const AddComment = async (tweetId, commentText) => {
     const program = anchor.workspace.twitter_dapp;
-    await program.methods.addComment(commentText).rpc();
+    await program.methods.AddComment(commentText).rpc();
   };
 
   return (
     <SolanaContext.Provider
       value={{
         initializeProvider,
-        createTweet,
-        getTweet,
-        reactToTweet,
-        addComment,
+        CreateTweet,
+        GetTweet,
+        ReactToTweet,
+        AddComment,
       }}
     >
       {children}
