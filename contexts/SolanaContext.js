@@ -15,24 +15,32 @@ export const SolanaProvider = ({ children }) => {
   };
 
   const CreateTweet = async (topic, content) => {
-    const program = anchor.workspace.twitter_dapp;
+    const programId = new anchor.web3.PublicKey('7NUYbszYn5pharRs2bogkkXAGNabhaUcvenjyemrHCvG');
+    const program = new anchor.Program(idl, programId, provider);
+    //const program = anchor.workspace.twitter_dapp;
     await program.methods.CreateTweet(topic, content).rpc();
   };
 
   const GetTweet = async (tweetId) => {
-    const program = anchor.workspace.twitter_dapp;
+    const programId = new anchor.web3.PublicKey('7NUYbszYn5pharRs2bogkkXAGNabhaUcvenjyemrHCvG');
+    const program = new anchor.Program(idl, programId, provider);
+    //const program = anchor.workspace.twitter_dapp;
     const tweet = await program.account.tweet.fetch(new PublicKey(tweetId));
     return tweet;
   };
 
   const ReactToTweet = async (tweetId, reactionType) => {
-    const program = anchor.workspace.twitter_dapp;
+    const programId = new anchor.web3.PublicKey('7NUYbszYn5pharRs2bogkkXAGNabhaUcvenjyemrHCvG');
+    const program = new anchor.Program(idl, programId, provider);
+    //const program = anchor.workspace.twitter_dapp;
     const reaction = reactionType === 'like' ? { like: {} } : { dislike: {} };
     await program.methods.ReactToTweet(reaction).rpc();
   };
 
   const AddComment = async (tweetId, commentText) => {
-    const program = anchor.workspace.twitter_dapp;
+    const programId = new anchor.web3.PublicKey('7NUYbszYn5pharRs2bogkkXAGNabhaUcvenjyemrHCvG');
+    const program = new anchor.Program(idl, programId, provider);
+    //const program = anchor.workspace.twitter_dapp;
     await program.methods.AddComment(commentText).rpc();
   };
 
