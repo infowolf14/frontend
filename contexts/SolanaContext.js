@@ -15,24 +15,24 @@ export const SolanaProvider = ({ children }) => {
   };
 
   const createTweet = async (topic, content) => {
-    const program = anchor.workspace.TwitterDapp;
+    const program = anchor.workspace.twitter_dapp;
     await program.methods.createTweet(topic, content).rpc();
   };
 
   const getTweet = async (tweetId) => {
-    const program = anchor.workspace.TwitterDapp;
+    const program = anchor.workspace.twitter_dapp;
     const tweet = await program.account.tweet.fetch(new PublicKey(tweetId));
     return tweet;
   };
 
   const reactToTweet = async (tweetId, reactionType) => {
-    const program = anchor.workspace.TwitterDapp;
+    const program = anchor.workspace.twitter_dapp;
     const reaction = reactionType === 'like' ? { like: {} } : { dislike: {} };
     await program.methods.reactToTweet(reaction).rpc();
   };
 
   const addComment = async (tweetId, commentText) => {
-    const program = anchor.workspace.TwitterDapp;
+    const program = anchor.workspace.twitter_dapp;
     await program.methods.addComment(commentText).rpc();
   };
 
