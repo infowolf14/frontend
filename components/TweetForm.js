@@ -4,11 +4,11 @@ import { useSolana } from '../contexts/SolanaContext';
 const TweetForm = () => {
   const [topic, setTopic] = useState('');
   const [content, setContent] = useState('');
-  const { createTweet } = useSolana();
+  const { CreateTweet } = useSolana();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createTweet(topic, content); // Call the Solana function to create a tweet
+    await CreateTweet(topic, content); // Call the Solana function to create a tweet
     setTopic('');
     setContent('');
   };
