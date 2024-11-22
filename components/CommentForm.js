@@ -3,11 +3,11 @@ import { useSolana } from '../contexts/SolanaContext';
 
 const CommentForm = ({ tweetId }) => {
   const [comment, setComment] = useState('');
-  const { addComment } = useSolana();
+  const { AddComment } = useSolana();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addComment(tweetId, comment); // Add the comment to the tweet
+    await AddComment(tweetId, comment); // Add the comment to the tweet
     setComment('');
   };
 
