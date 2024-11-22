@@ -4,7 +4,7 @@ import { useSolana } from '../contexts/SolanaContext';
 const TweetForm = () => {
   const [topic, setTopic] = useState('');
   const [content, setContent] = useState('');
-  const { CreateTweet } = someObject || {};  // Fallback if someObject is undefined
+  const { CreateTweet } = useSolana() || {};  // Fallback if someObject is undefined
   //const { CreateTweet } = useSolana();
 
   const handleSubmit = async (e) => {
