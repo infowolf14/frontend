@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useSolana } from '../contexts/SolanaContext';
 
 const TweetCard = ({ tweetId }) => {
-  const { getTweet, reactToTweet, fetchComments } = useSolana();
+  const { GetTweet, ReactToTweet, fetchComments } = useSolana();
   const [tweet, setTweet] = useState(null);
   const [comments, setComments] = useState([]);
   const [reaction, setReaction] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const tweetData = await getTweet(tweetId); // Fetch tweet by ID
+      const tweetData = await GetTweet(tweetId); // Fetch tweet by ID
       const tweetComments = await fetchComments(tweetId); // Fetch comments for the tweet
       setTweet(tweetData);
       setComments(tweetComments);
@@ -19,7 +19,7 @@ const TweetCard = ({ tweetId }) => {
   }, [tweetId]);
 
   const handleReaction = async (reactionType) => {
-    await reactToTweet(tweetId, reactionType); // React to tweet
+    await ReactToTweet(tweetId, reactionType); // React to tweet
     setReaction(reactionType); // Update local state with the new reaction
   };
 
