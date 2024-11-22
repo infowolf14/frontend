@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSolana } from '../contexts/SolanaContext';
 
 const TweetCard = ({ tweetId }) => {
-  const { GetTweet, ReactToTweet, fetchComments } = useSolana();
+  const { GetTweet, ReactToTweet, fetchComments } = useSolana() || {};  // Fallback if useSolana() is undefined
+  //const { GetTweet, ReactToTweet, fetchComments } = useSolana();
   const [tweet, setTweet] = useState(null);
   const [comments, setComments] = useState([]);
   const [reaction, setReaction] = useState(null);
