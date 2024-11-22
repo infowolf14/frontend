@@ -7,7 +7,7 @@ import CommentList from '../components/CommentList';
 import ReactionButton from '../components/ReactionButton';
 
 export default function Home() {
-  const testTweetId = '';  // Replace with a valid tweet ID for testing
+  const testTweetId = 'sampleTweetId';  // Replace with a valid tweet ID for testing
   const testComments = [
     { id: 1, text: 'This is a great tweet!' },
     { id: 2, text: 'I agree with this post!' },
