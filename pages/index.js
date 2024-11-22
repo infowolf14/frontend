@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Welcome to Next.js!</h1>
+      <h1>Welcome to Twitter dApp!</h1>
 
       {/* Test the TweetForm component */}
       <h2>Create a New Tweet</h2>
